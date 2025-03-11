@@ -1,24 +1,25 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const flame = document.querySelector(".flame");
+document.addEventListener("DOMContentLoaded", function() {
     const candle = document.querySelector(".candle");
+    const flame = document.querySelector(".flame");
+    const sprinklesContainer = document.querySelector(".sprinkles");
 
-    function blowCandle() {
-        flame.style.display = "none";
+    // Generate random sprinkles
+    for (let i = 0; i < 20; i++) {
+        let sprinkle = document.createElement("div");
+        sprinkle.classList.add("sprinkle");
+        sprinkle.style.backgroundColor = getRandomColor();
+        sprinkle.style.top = Math.random() * 40 + "px";
+        sprinkle.style.left = Math.random() * 100 + "%";
+        sprinkle.style.transform = rotate(${Math.random() * 360}deg);
+        sprinklesContainer.appendChild(sprinkle);
     }
 
-    candle.addEventListener("click", blowCandle);
-
-    function addSprinkles() {
-        const icing = document.querySelector(".icing");
-        for (let i = 0; i < 20; i++) { // More sprinkles
-            let sprinkle = document.createElement("div");
-            sprinkle.classList.add("sprinkle");
-            sprinkle.style.top = ${Math.random() * 25 + 5}px;
-            sprinkle.style.left = ${Math.random() * 220 + 10}px;
-            sprinkle.style.backgroundColor = ["#ff5722", "#4caf50", "#3f51b5", "#ffeb3b", "#ff4081"][Math.floor(Math.random() * 5)];
-            icing.appendChild(sprinkle);
-        }
+    function getRandomColor() {
+        const colors = ["#ff0000", "#00ff00", "#0000ff", "#ffcc00", "#ff66ff"];
+        return colors[Math.floor(Math.random() * colors.length)];
     }
 
-    addSprinkles();
+    candle.addEventListener("click", function() {
+        flame.style.display = "none"; // Blow out the candle
+    });
 });
