@@ -4,75 +4,72 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #fce4d8;
-    font-family: Arial, sans-serif;
+    background-color: #ffe6f2;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    overflow: hidden;
+    position: relative;
 }
 
-h1 {
-    font-size: 36px;
-    color: #5d4037;
+/* Cute Heart Background */
+body::before {
+    content: "❤️ 💕 💖 💗 💓 💞 💝";
+    font-size: 100px;
+    position: absolute;
+    opacity: 0.2;
+    animation: floatHearts 10s infinite linear alternate;
+    top: 20%;
+    left: 5%;
 }
 
-.message {
-    opacity: 0;
-    font-size: 20px;
-    color: #d84315;
-    margin-top: 10px;
-}
-
+/* Bigger Cake */
 .cake {
     position: relative;
-    width: 150px;
-    height: 100px;
-    background-color: #e91e63;
-    border-radius: 10px;
-    box-shadow: 0 5px 0 #c2185b;
-    margin-top: 20px;
+    width: 250px;
+    height: 150px;
+    background: #ff4d6d;
+    border-radius: 15px;
+    box-shadow: 0 6px #cc3b5c;
 }
 
+/* Icing */
 .icing {
     position: absolute;
-    top: -20px;
+    top: -30px;
     width: 100%;
-    height: 25px;
-    background-color: #ffeb3b;
+    height: 30px;
+    background: #ffddaa;
     border-radius: 15px 15px 0 0;
 }
 
+/* Sprinkles */
 .sprinkle {
     position: absolute;
-    width: 6px;
-    height: 6px;
+    width: 7px;
+    height: 12px;
     border-radius: 50%;
 }
 
+/* Candle */
 .candle {
     position: absolute;
-    top: -40px;
+    top: -50px;
     left: 50%;
-    width: 10px;
-    height: 40px;
-    background-color: #ff5722;
+    width: 15px;
+    height: 50px;
+    background: white;
+    border-radius: 5px;
     transform: translateX(-50%);
+    cursor: pointer;
 }
 
+/* Flame */
 .flame {
     position: absolute;
-    top: -15px;
+    top: -20px;
     left: 50%;
-    width: 12px;
-    height: 20px;
-    background-color: orange;
+    width: 15px;
+    height: 25px;
+    background: orange;
     border-radius: 50%;
     transform: translateX(-50%);
-    animation: flicker 1s infinite alternate;
-}
-
-@keyframes flicker {
-    0% { opacity: 1; transform: scale(1); }
-    100% { opacity: 0.8; transform: scale(1.1); }
-}
-
-@keyframes blowout {
-    to { opacity: 0; transform: scale(0); }
 }
