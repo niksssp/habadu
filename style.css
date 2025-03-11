@@ -1,75 +1,77 @@
 body {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    background-color: #ffe4e1;
+    background-image: url('hearts.png');
+    background-size: cover;
+}
+
+.cake-container {
+    position: relative;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #ffe6f2;
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    overflow: hidden;
-    position: relative;
 }
 
-/* Cute Heart Background */
-body::before {
-    content: "❤️ 💕 💖 💗 💓 💞 💝";
-    font-size: 100px;
-    position: absolute;
-    opacity: 0.2;
-    animation: floatHearts 10s infinite linear alternate;
-    top: 20%;
-    left: 5%;
-}
-
-/* Bigger Cake */
 .cake {
     position: relative;
-    width: 250px;
-    height: 150px;
-    background: #ff4d6d;
+    width: 300px;
+    height: 180px;
+    background-color: #ff6699;
     border-radius: 15px;
-    box-shadow: 0 6px #cc3b5c;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Icing */
 .icing {
     position: absolute;
     top: -30px;
-    width: 100%;
-    height: 30px;
-    background: #ffddaa;
-    border-radius: 15px 15px 0 0;
+    width: 320px;
+    height: 50px;
+    background-color: #fff5b1;
+    border-radius: 20px;
 }
 
-/* Sprinkles */
+.sprinkles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
 .sprinkle {
     position: absolute;
-    width: 7px;
-    height: 12px;
-    border-radius: 50%;
+    width: 5px;
+    height: 10px;
+    background-color: #ff0000;
+    border-radius: 5px;
+    transform: rotate(30deg);
 }
 
-/* Candle */
 .candle {
     position: absolute;
     top: -50px;
-    left: 50%;
     width: 15px;
-    height: 50px;
-    background: white;
+    height: 60px;
+    background-color: red;
     border-radius: 5px;
-    transform: translateX(-50%);
-    cursor: pointer;
 }
 
-/* Flame */
 .flame {
     position: absolute;
     top: -20px;
-    left: 50%;
-    width: 15px;
+    width: 20px;
     height: 25px;
-    background: orange;
+    background-color: orange;
     border-radius: 50%;
-    transform: translateX(-50%);
+    animation: flicker 1s infinite alternate;
+}
+
+@keyframes flicker {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0.8; transform: scale(1.1); }
 }
