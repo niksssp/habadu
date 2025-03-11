@@ -1,31 +1,29 @@
 document.addEventListener("DOMContentLoaded", function () {
     const flame = document.querySelector(".flame");
     const message = document.querySelector(".message");
+    const cake = document.querySelector(".cake");
 
-    function blowOutCandle() {
-        if (flame.style.display !== "none") {
-            flame.style.animation = "blowout 0.5s forwards";
-            setTimeout(() => {
-                flame.style.display = "none";
-                message.style.opacity = "1";
-            }, 500);
+    function blowCandle() {
+        flame.style.animation = "blowout 0.5s forwards";
+        setTimeout(() => {
+            flame.style.display = "none";
+            message.style.opacity = "1";
+        }, 500);
+    }
+
+    cake.addEventListener("click", blowCandle);
+
+    function addSprinkles() {
+        const icing = document.querySelector(".icing");
+        for (let i = 0; i < 10; i++) {
+            let sprinkle = document.createElement("div");
+            sprinkle.classList.add("sprinkle");
+            sprinkle.style.top = ${Math.random() * 20 + 5}px;
+            sprinkle.style.left = ${Math.random() * 140 + 5}px;
+            sprinkle.style.backgroundColor = ["#ff5722", "#4caf50", "#3f51b5"][Math.floor(Math.random() * 3)];
+            icing.appendChild(sprinkle);
         }
     }
 
-    flame.addEventListener("click", blowOutCandle);
-
-    if ("SpeechRecognition" in window || "webkitSpeechRecognition" in window) {
-        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-        recognition.continuous = true;
-        recognition.interimResults = false;
-
-        recognition.onresult = function (event) {
-            const transcript = event.results[event.results.length - 1][0].transcript.toLowerCase();
-            if (transcript.includes("blow")) {
-                blowOutCandle();
-            }
-        };
-
-        recognition.start();
-    }
+    addSprinkles();
 });
