@@ -1,7 +1,7 @@
 body {
-    background-color: #222;
-    color: white;
-    font-family: Arial, sans-serif;
+    background-color: #fce4ec;
+    color: #4a148c;
+    font-family: "Comic Sans MS", cursive, sans-serif;
     text-align: center;
     padding-top: 50px;
 }
@@ -13,28 +13,48 @@ h1 {
 
 .cake {
     position: relative;
-    width: 120px;
-    height: 150px;
+    width: 150px;
+    height: 200px;
     margin: 20px auto;
 }
 
 .cake-body {
-    width: 100px;
-    height: 80px;
-    background-color: pink;
+    width: 150px;
+    height: 100px;
+    background-color: #ff4081;
     border-radius: 10px;
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.icing {
+    width: 160px;
+    height: 40px;
+    background-color: #ffeb3b;
+    border-radius: 20px;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.sprinkle {
+    width: 5px;
+    height: 10px;
+    background-color: #ff5722;
+    position: absolute;
+    border-radius: 50%;
 }
 
 .candle {
     width: 10px;
-    height: 40px;
+    height: 50px;
     background-color: white;
     position: absolute;
-    top: -30px;
+    top: -50px;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 5px;
@@ -42,11 +62,11 @@ h1 {
 
 .flame {
     width: 15px;
-    height: 20px;
+    height: 25px;
     background-color: orange;
     border-radius: 50%;
     position: absolute;
-    top: -20px;
+    top: -30px;
     left: 50%;
     transform: translateX(-50%);
     animation: flicker 0.2s infinite alternate;
