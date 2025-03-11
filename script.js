@@ -20,3 +20,6 @@ navigator.mediaDevices.getUserMedia({audio:true;}).then((stream)=>{
   }
   detectBlow();
 });
+document.querySelector(".flame".addEventListener("click",function(){
+  this.style.display="none";
+});
