@@ -1,25 +1,31 @@
-const flame=document.getElementById("flame");
+document.addEventListener("DOMContentLoaded", function () {
+    const flame = document.querySelector(".flame");
+    const message = document.querySelector(".message");
 
-navigator.mediaDevices.getUserMedia({audio:true;}).then((stream)=>{
-  const audioContext=new AudioContext();
-  const analyser=audioContext.createAnalyser();
-  const microphone=audioContext.createMediaStreamSource(stream);microphone.connect(analyser);
-  
-  analyser.fftSize=256;
-  const bufferLength=analysser.frequencyBinCount;
-  const dataArrat=new uint8Array(bufferLength);
-  
-  function detectBlow(){
-    analyser.getByteFrequencyData(dataArray);
-    let maxVolume=Math.max(...dataArray);
-    If (maxVolume>100){
-      flame.style.display="none";
-      alert("yayyyyy");
+    function blowOutCandle() {
+        if (flame.style.display !== "none") {
+            flame.style.animation = "blowout 0.5s forwards";
+            setTimeout(() => {
+                flame.style.display = "none";
+                message.style.opacity = "1";
+            }, 500);
+        }
     }
-    requestAnimationFrame(detectBlow);
-  }
-  detectBlow();
-});
-document.querySelector(".flame".addEventListener("click",function(){
-  this.style.display="none";
+
+    flame.addEventListener("click", blowOutCandle);
+
+    if ("SpeechRecognition" in window || "webkitSpeechRecognition" in window) {
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.continuous = true;
+        recognition.interimResults = false;
+
+        recognition.onresult = function (event) {
+            const transcript = event.results[event.results.length - 1][0].transcript.toLowerCase();
+            if (transcript.includes("blow")) {
+                blowOutCandle();
+            }
+        };
+
+        recognition.start();
+    }
 });
